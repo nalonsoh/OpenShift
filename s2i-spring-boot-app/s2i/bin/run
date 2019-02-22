@@ -1,0 +1,12 @@
+#!/bin/sh -e
+#
+# S2I run script for the 'spring-boot-app' image.
+# The run script executes the server that runs your application.
+#
+# For more information see the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+jar_file=$(ls /tmp/src/target | grep .jar$ | grep -v "docker-info")
+echo Ejecutando JAR $jar_file ...
+java -jar /tmp/src/target/$jar_file
